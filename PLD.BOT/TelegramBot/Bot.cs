@@ -127,7 +127,6 @@ namespace PLD.BOT.TelegramBot
 
 
         }
-
         private static async void BotButton(long ID)
         {
 
@@ -263,7 +262,6 @@ namespace PLD.BOT.TelegramBot
 
             await botClient.SendTextMessageAsync(ID, "SILVER: Выберете команду", Telegram.Bot.Types.Enums.ParseMode.Default, false, false, 0, keyboard);
         }
-
         private static void BotClient_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
             var text = e?.Message?.Text;
