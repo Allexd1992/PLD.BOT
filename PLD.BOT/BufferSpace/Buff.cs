@@ -35,49 +35,48 @@ namespace PLD.BOT.BufferSpace
         private void ClientDa_UpdateOpcSilver(object sender, EventArgs e)
         {
             var Values = sender as OpcDaItemValue[];
-            silver.errReel = Values[0].Value as uint?;
-            silver.errVacuum = Values[1].Value as uint?;
-            silver.speed = Values[2].Value as double?;
-            silver.position = Values[3].Value as double?;
-            silver.length = Values[4].Value as double?;
-            silver.tapeName = Values[5].Value as string;
-            silver.runTimes = Values[6].Value as uint?;
-            silver.runTimesSet = Values[7].Value as uint?;
-            silver.lengthSet = Values[8].Value as double?;
-            silver.procesStart = Values[9].Value as bool?;
-           // Console.WriteLine(Values[9].Value as bool?);
+            silver.errReel = (ushort)Values[0].Value;
+            silver.errVacuum = (ushort)Values[1].Value;
+            silver.speed = Convert.ToSingle((short)Values[4].Value)/10;
+            silver.position = Convert.ToSingle(Values[5].Value);
+            silver.length = Convert.ToSingle(Values[2].Value)/1000;
+            silver.tapeName = (string)Values[6].Value;
+            //silver.runTimes = Convert.ToDouble((ushort)Values[6].Value);
+            //silver.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
+            silver.lengthSet = Convert.ToDouble((int)Values[3].Value) / 1000;
+            silver.procesStart = (bool)Values[7].Value;
         }
 
         private void ClientDa_UpdateOpcPldB(object sender, EventArgs e)
         {
             var Values = sender as OpcDaItemValue[];
-            pldB.errReel = Values[0].Value as uint?;
-            pldB.errVacuum = Values[1].Value as uint?;
-            pldB.speed = Values[2].Value as double?;
-            pldB.position = Values[3].Value as double?;
-            pldB.length = Values[4].Value as double?;
-            pldB.tapeName = Values[5].Value as string;
-            pldB.runTimes = Values[6].Value as uint?;
-            pldB.runTimesSet = Values[7].Value as uint?;
-            pldB.lengthSet = Values[8].Value as double?;
-            pldB.procesStart = Values[9].Value as bool?;
-           // Console.WriteLine(Values[9].Value as bool?);
+            pldB.errReel = (ushort)Values[0].Value;
+            pldB.errVacuum = (ushort)Values[1].Value ;
+            pldB.speed = Convert.ToSingle(Values[2].Value);
+            pldB.position = Convert.ToSingle(Values[3].Value);
+            pldB.length = Convert.ToSingle(Values[4].Value);
+            pldB.tapeName = (string)Values[5].Value;
+            pldB.runTimes =Convert.ToDouble((ushort)Values[6].Value);
+            pldB.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
+            pldB.lengthSet = Convert.ToDouble((int)Values[8].Value)/1000;
+            pldB.procesStart = (bool)Values[9].Value;
+           //Console.WriteLine(pldB.tapeName);
+            // Console.WriteLine(Values[9].Value as bool?);
         }
 
         private void ClientDa_UpdateOpcPldA(object sender, EventArgs e)
         {
             var Values = sender as OpcDaItemValue[];
-            pldA.errReel = Values[0].Value as uint?;
-            pldA.errVacuum = Values[1].Value as uint?;
-            pldA.speed = Values[2].Value as double?;
-            pldA.position = Values[3].Value as double?;
-            pldA.length = Values[4].Value as double?;
-            pldA.tapeName = Values[5].Value as string;
-            pldA.runTimes = Values[6].Value as uint?;
-            pldA.runTimesSet = Values[7].Value as uint?;
-            pldA.lengthSet = Values[8].Value as double?;
-            pldA.procesStart = Values[9].Value as bool?;
-           // Console.WriteLine(Values[9].Value as bool?);
+            pldA.errReel = (ushort)Values[0].Value;
+            pldA.errVacuum = (ushort)Values[1].Value;
+            pldA.position = Convert.ToSingle(Values[3].Value);
+            pldA.length = Convert.ToSingle(Values[4].Value);
+            pldA.tapeName = (string)Values[5].Value;
+            pldA.runTimes = Convert.ToDouble((ushort)Values[6].Value);
+            pldA.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
+            pldA.lengthSet = Convert.ToDouble((int)Values[8].Value) / 1000;
+            pldA.procesStart = (bool)Values[9].Value;
+            // Console.WriteLine(Values[9].Value as bool?);
         }
 
         private void ClientDa_UpdateOpcLEAP300(object sender, EventArgs e)

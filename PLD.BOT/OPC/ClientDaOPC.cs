@@ -126,7 +126,7 @@ namespace PLD.BOT.OPC
             },
             new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.PLD_Set_A_PLC_01.Left_Length_m",
+                ItemId = "FinsTCP.PLD_Set_A_PLC_01.Main_Length_m",
                 IsActive = true
             },
             new OpcDaItemDefinition()
@@ -184,7 +184,7 @@ namespace PLD.BOT.OPC
             },
             new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.PLD_Set_B_PLC_01.Left_Length_m",
+                ItemId = "FinsTCP.PLD_Set_B_PLC_01.Main_Length_m",
                 IsActive = true
             },
             new OpcDaItemDefinition()
