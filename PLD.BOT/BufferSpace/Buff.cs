@@ -37,14 +37,16 @@ namespace PLD.BOT.BufferSpace
             var Values = sender as OpcDaItemValue[];
             silver.errReel = (ushort)Values[0].Value;
             silver.errVacuum = (ushort)Values[1].Value;
-            silver.speed = Convert.ToSingle((short)Values[4].Value)/10;
+            silver.speed = Convert.ToSingle((ushort)Values[4].Value)/10;
             silver.position = Convert.ToSingle(Values[5].Value);
-            silver.length = Convert.ToSingle(Values[2].Value)/1000;
+            silver.length = Convert.ToSingle((uint)Values[2].Value)/1000;
             silver.tapeName = (string)Values[6].Value;
             //silver.runTimes = Convert.ToDouble((ushort)Values[6].Value);
             //silver.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
-            silver.lengthSet = Convert.ToDouble((int)Values[3].Value) / 1000;
+            silver.lengthSet = Convert.ToDouble((uint)Values[3].Value) / 1000;
             silver.procesStart = (bool)Values[7].Value;
+            //Console.WriteLine(silver.position);
+            //Console.WriteLine(silver.tapeName);
         }
 
         private void ClientDa_UpdateOpcPldB(object sender, EventArgs e)
@@ -60,7 +62,8 @@ namespace PLD.BOT.BufferSpace
             pldB.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
             pldB.lengthSet = Convert.ToDouble((int)Values[8].Value)/1000;
             pldB.procesStart = (bool)Values[9].Value;
-           //Console.WriteLine(pldB.tapeName);
+           // Console.WriteLine(pldB.speed);
+            //Console.WriteLine(pldB.tapeName);
             // Console.WriteLine(Values[9].Value as bool?);
         }
 
@@ -69,6 +72,7 @@ namespace PLD.BOT.BufferSpace
             var Values = sender as OpcDaItemValue[];
             pldA.errReel = (ushort)Values[0].Value;
             pldA.errVacuum = (ushort)Values[1].Value;
+            pldA.speed = Convert.ToSingle(Values[2].Value);
             pldA.position = Convert.ToSingle(Values[3].Value);
             pldA.length = Convert.ToSingle(Values[4].Value);
             pldA.tapeName = (string)Values[5].Value;
@@ -76,6 +80,8 @@ namespace PLD.BOT.BufferSpace
             pldA.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
             pldA.lengthSet = Convert.ToDouble((int)Values[8].Value) / 1000;
             pldA.procesStart = (bool)Values[9].Value;
+            //Console.WriteLine(Convert.ToSingle(Values[2].Value));
+            //Console.WriteLine(pldA.speed);
             // Console.WriteLine(Values[9].Value as bool?);
         }
 
@@ -87,7 +93,7 @@ namespace PLD.BOT.BufferSpace
             leap300.Egy = (double)Values[2].Value;
             leap300.Hv = (double)Values[3].Value;
             leap300.counterNewFill = (double)Values[4].Value;
-            leap300.sideA = (bool)Values[5].Value;
+            leap300.sideA = Convert.ToBoolean((ushort)Values[5].Value);
            // Console.WriteLine(Values[0].Value as string);
         }
 
@@ -100,7 +106,7 @@ namespace PLD.BOT.BufferSpace
             leap130.Egy = (double)Values[2].Value;
             leap130.Hv = (double)Values[3].Value;
             leap130.counterNewFill = (double)Values[4].Value;
-            leap130.sideA = (bool)Values[5].Value;
+            leap130.sideA = Convert.ToBoolean((ushort)Values[5].Value);
             // Console.WriteLine(Values[0].Value as string);
         }
     }

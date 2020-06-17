@@ -222,42 +222,42 @@ namespace PLD.BOT.OPC
             {
             new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC01.Alarm.AlarmReel",
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_01.Alarm.AlarmReel",
                 IsActive = true
             },
             new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC01.Alarm.AlarmVacuum",
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_01.Alarm.AlarmVacuum",
                 IsActive = true
             },
              new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC01.HMI_Length_Monitor", //*1000
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_01.HMI_Length_Monitor", //*1000
                 IsActive = true
             },
               new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC01.HMI_Lenth_Setting", //*1000
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_01.HMI_Lenth_Setting", //*1000
                 IsActive = true
             },
                 new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC01.HMI_Tape_Speed_Monitor",//*10
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_01.HMI_Tape_Speed_Monitor",//*10
                 IsActive = true
             },
               new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC03.Pos",
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_03.Pos",
                 IsActive = true
             },
                 new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC03.Name",
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_03.Name",
                 IsActive = true
             },
                     new OpcDaItemDefinition()
             {
-                ItemId = "FinsTCP.SPAD_SILVER_PLC03.PROCES_START",
+                ItemId = "FinsTCP.SPAD_SILVER_PLC_03.PROCES_START",
                 IsActive = true
             },
             };
@@ -275,9 +275,13 @@ namespace PLD.BOT.OPC
         {
             try
             {
-                var Values = groupLeap130.Read(groupLeap130.Items, OpcDaDataSource.Device);
-                UpdateOpcLEAP130?.Invoke(Values, null);
-                _errOpcLEAP130 = false;
+                //await Task.Run(() =>
+                //{
+                    var Values = groupLeap130.Read(groupLeap130.Items, OpcDaDataSource.Device);
+                    UpdateOpcLEAP130?.Invoke(Values, null);
+                    _errOpcLEAP130 = false;
+                //}
+                //);
             }
             catch
             {
@@ -309,8 +313,8 @@ namespace PLD.BOT.OPC
 
             try
             {
-                var Values = groupPldA.Read(groupPldA.Items, OpcDaDataSource.Device);
-                UpdateOpcPldA?.Invoke(Values, null);
+                var Values1 = groupPldA.Read(groupPldA.Items, OpcDaDataSource.Device);
+                UpdateOpcPldA?.Invoke(Values1, null);
                 _errOpcPldA = false;
             }
             catch
@@ -344,6 +348,7 @@ namespace PLD.BOT.OPC
             try
             {
                 var Values = groupSilver.Read(groupSilver.Items, OpcDaDataSource.Device);
+                //Console.WriteLine("Done");
                 UpdateOpcSilver?.Invoke(Values, null);
                 _errOpcSilver = false;
             }
