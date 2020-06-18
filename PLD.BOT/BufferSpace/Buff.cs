@@ -37,7 +37,7 @@ namespace PLD.BOT.BufferSpace
             var Values = sender as OpcDaItemValue[];
             silver.errReel = (ushort)Values[0].Value;
             silver.errVacuum = (ushort)Values[1].Value;
-            silver.speed = Convert.ToSingle((ushort)Values[4].Value)/10;
+            silver.speed = Convert.ToSingle((ushort)Values[4].Value)/ 100;
             silver.position = Convert.ToSingle(Values[5].Value);
             silver.length = Convert.ToSingle((uint)Values[2].Value)/1000;
             silver.tapeName = (string)Values[6].Value;
@@ -45,7 +45,7 @@ namespace PLD.BOT.BufferSpace
             //silver.runTimesSet = Convert.ToDouble((ushort)Values[7].Value);
             silver.lengthSet = Convert.ToDouble((uint)Values[3].Value) / 1000;
             silver.procesStart = (bool)Values[7].Value;
-            //Console.WriteLine(silver.position);
+            //Console.WriteLine(silver.lengthSet);
             //Console.WriteLine(silver.tapeName);
         }
 

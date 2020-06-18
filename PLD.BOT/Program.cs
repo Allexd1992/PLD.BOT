@@ -19,7 +19,7 @@ namespace PLD.BOT
         const int SW_SHOW = 5;
         static void Main(string[] args)
         {
-            var model = new  BL.mainModel();
+            var model = new BL.mainModel();
             {
                 var handle = GetConsoleWindow();
                 ShowWindow(handle, SW_HIDE);

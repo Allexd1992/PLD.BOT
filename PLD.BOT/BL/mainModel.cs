@@ -31,7 +31,7 @@ namespace PLD.BOT.BL
             bot.pldBStatusGet += Bot_pldBStatusGet;
             bot.silverStatusGet += Bot_silverStatusGet;
             bot.silverErrorsGet += Bot_silverErrorsGet;
-            var time = new Timer(1000);
+            var time = new Timer(10000);
             time.AutoReset = true;
             time.Enabled = true;
             time.Elapsed += Time_Elapsed;
@@ -66,7 +66,7 @@ namespace PLD.BOT.BL
         private void Bot_silverStatusGet(object sender, EventArgs e)
         {
             var message = sender as Telegram.Bot.Types.Message;
-            var Msg = statusPldGet(buff.silver);
+            var Msg = statusSilverGet(buff.silver);
             bot.SendMessage(message.Chat.Id, "Статус SILVER: \n" + Msg);
             GC.Collect();
         }
@@ -209,7 +209,7 @@ namespace PLD.BOT.BL
             {
                 Name = "LEAP300";
             }
-            if ((leap.Egy > leap.EgyOld + 0.2 || leap.Hv > leap.HvOld + 0.009 ) && (leap.Egy!=404 && leap.Hv != 404))
+            if ((/*leap.Egy > leap.EgyOld + 0.2 ||*/ leap.Hv > leap.HvOld + 0.009 ) && (leap.Egy!=404 && leap.Hv != 404))
             {
                 double CNF;
                 string SCNF;
@@ -945,7 +945,7 @@ namespace PLD.BOT.BL
                 pld.SendFlags[33] = false;
 
             }
-            pld.SendFlags[33] = pld.procesStart;
+            pld.SendFlags[32] = pld.procesStart;
             if (pld.procesStart  && pld.speed >0 )
             {
                 
@@ -1001,7 +1001,7 @@ namespace PLD.BOT.BL
             }
             silver.SendFlags[33] = silver.procesStart;
 
-            int min = Convert.ToInt32((silver.lengthSet - silver.length ) * 60 / (silver.speed == 0 ? 0.00001 : silver.speed));
+            int min = Convert.ToInt32((silver.lengthSet - silver.length ) * 60 / (silver.speed));
             if (min < 11 && min > 0)
             {
                 if (!silver.SendFlags[34])
